@@ -1,10 +1,18 @@
 import { defineConfig } from 'vitepress'
 import tailwindcss from '@tailwindcss/vite'
 
+// Автоматическое определение base path для GitHub Pages
+// Для Vercel/Netlify оставьте base пустым или undefined
+const isGitHubPages = process.env.GITHUB_PAGES === 'true' || process.env.GITHUB_ACTIONS
+// Явно устанавливаем base для GitHub Pages (раскомментируйте нужную строку):
+const base = '/aqua-call-web-site/'  // Для GitHub Pages
+// const base = '/'  // Для Vercel/Netlify
+
 export default defineConfig({
   lang: 'ru-RU',
   title: 'AquaCall ♥',
   description: 'Сайт документации AquaCall',
+  base,
 
   vite: {
     plugins: [tailwindcss()],
